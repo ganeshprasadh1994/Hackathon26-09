@@ -1,4 +1,4 @@
-let dispData =  (values)  => {
+const dispData =  (values)  => {
     const tbody = document.getElementById("tbody");
     const tr1 = document.createElement("tr");
     const td1 = document.createElement("td");
@@ -15,16 +15,22 @@ let dispData =  (values)  => {
     tbody.append(tr1,tr2);
 }
 
-let getResponse = async () => {
+
+document.onload = function (){
+var button1 = document.getElementById("#btn");
+if(button1){
+button1.addEventListener('click', getResponse = async () => {
     try{
-    const word = document.getElementById('form1').innerHTML;
-    alert(word);
-    const resp = await fetch("https://api.nationalize.io/?name={word}#");
-    const values = await resp.json();
-    dispData(values);
-    }
-    catch(error){
-        console.log(error)
-    }
+        const word = document.getElementById("form1").innerHTML;
+        alert(word);
+        const resp = await fetch("https://api.nationalize.io/?name={word}#");
+        const values = await resp.json();
+        dispData(values);
+        }
+        catch(error){
+            console.log(error)
+        }
+},false);
 }
-document.getElementById("btn").addEventListener("click", getResponse);
+}
+
